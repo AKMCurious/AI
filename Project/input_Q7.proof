@@ -1,0 +1,44 @@
+============================== prooftrans ============================
+Prover9 (32) version Dec-2007, Dec 2007.
+Process 18440 was started by hp on LAPTOP-U8QNP91K,
+Wed Apr 29 15:07:58 2020
+The command was "/cygdrive/c/Program Files (x86)/Prover9-Mace4/bin-win32/prover9".
+============================== end of head ===========================
+
+============================== end of input ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 2.16 (+ 0.12) seconds.
+% Length of proof is 24.
+% Level of proof is 6.
+% Maximum clause weight is 0.
+% Given clauses 0.
+
+1 Supermarket(x) & Goods(y) -> Sell(x,y) # label(non_clause).  [assumption].
+7 Safeway(x) -> Supermarket(x) # label(non_clause).  [assumption].
+8 NorthBerkeleySafeway(x) -> Safeway(x) # label(non_clause).  [assumption].
+10 Meat(x) -> Goods(x) # label(non_clause).  [assumption].
+23 Beef(x) -> Meat(x) # label(non_clause).  [assumption].
+110 Tomato(x) & Buy(John,x,y) & NorthBerkeleySafeway(x) # label(non_clause).  [assumption].
+111 Beef(x) & Buy(John,x,y) & NorthBerkeleySafeway(x) # label(non_clause).  [assumption].
+112 Sell(x,Deodarant) & Safeway(x) # label(non_clause) # label(goal).  [goal].
+114 -Supermarket(x) | -Goods(y) | Sell(x,y).  [clausify(1)].
+118 -Safeway(x) | Supermarket(x).  [clausify(7)].
+156 NorthBerkeleySafeway(x).  [clausify(110)].
+157 -NorthBerkeleySafeway(x) | Safeway(x).  [clausify(8)].
+160 -Beef(x) | Meat(x).  [clausify(23)].
+161 -Meat(x) | Goods(x).  [clausify(10)].
+177 -Beef(x) | Goods(x).  [resolve(160,b,161,a)].
+190 -Safeway(x) | -Goods(y) | Sell(x,y).  [resolve(118,b,114,a)].
+411 Safeway(x).  [resolve(156,a,157,a)].
+413 -Sell(c1,Deodarant) | -Safeway(c1).  [deny(112)].
+424 -Beef(x) | -Safeway(y) | Sell(y,x).  [resolve(177,b,190,b)].
+1140 Beef(x).  [clausify(111)].
+1154 -Beef(x) | Sell(y,x).  [resolve(424,b,411,a)].
+1375 -Sell(c1,Deodarant).  [resolve(411,a,413,b)].
+1399 Sell(x,y).  [resolve(1154,a,1140,a)].
+1643 $F.  [resolve(1399,a,1375,a)].
+
+============================== end of proof ==========================

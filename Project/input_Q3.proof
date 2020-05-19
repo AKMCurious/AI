@@ -1,0 +1,31 @@
+============================== prooftrans ============================
+Prover9 (32) version Dec-2007, Dec 2007.
+Process 11160 was started by hp on LAPTOP-U8QNP91K,
+Wed Apr 29 13:58:59 2020
+The command was "/cygdrive/c/Program Files (x86)/Prover9-Mace4/bin-win32/prover9".
+============================== end of head ===========================
+
+============================== end of input ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 3.77 (+ 0.14) seconds.
+% Length of proof is 11.
+% Level of proof is 4.
+% Maximum clause weight is 0.
+% Given clauses 0.
+
+23 Beef(x) -> Meat(x) # label(non_clause).  [assumption].
+110 Tomato(x) & Buy(John,x,y) & NorthBerkeleySafeway(x) # label(non_clause).  [assumption].
+111 Beef(x) & Buy(John,x,y) & NorthBerkeleySafeway(x) # label(non_clause).  [assumption].
+112 Buy(John,x,y) & Meat(x) # label(non_clause) # label(goal).  [goal].
+160 -Beef(x) | Meat(x).  [clausify(23)].
+172 -Buy(John,c1,c2) | -Meat(c1).  [deny(112)].
+626 -Buy(John,c1,c2) | -Beef(c1).  [resolve(172,b,160,b)].
+627 Buy(John,x,y).  [clausify(110)].
+1237 Beef(x).  [clausify(111)].
+1263 -Beef(c1).  [resolve(626,a,627,a)].
+1850 $F.  [resolve(1263,a,1237,a)].
+
+============================== end of proof ==========================

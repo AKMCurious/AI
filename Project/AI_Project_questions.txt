@@ -1,0 +1,32 @@
+Q1) Is John a child or an adult?
+	Adult(John).
+Q2) Does John now have at least two tomatoes?
+	Person(John) & Tomato(x) & Number(2) & Measure(2,w).
+Q3) Did John buy any meat?
+	Buy(John,x,y) & Meat(x).
+Q4) If Mary was buying tomatoes at the same time as John, did he see her?
+	Person(Mary) & Buy(Mary,x,z) & Tomato(x) & NorthBerkeleySafeway(z) & Share(John,Mary) -> Meet(John,Mary).
+Q5) Are the tomatoes made in the supermarket?
+	Tomato(x) & -Make(y,x) & Supermarket(y).
+Q6) What is John going to do with the tomatoes?
+	Tomato(x) & Eat(John, x).
+Q7) Does Safeway sell deodorant?
+	Sell(x,Deodarant) & Safeway(x).
+Q8) Did John bring some money or a credit card to the supermarket?
+	Possess(John,y) & Money(y).
+Q9) Does John have less money after going to the supermarket?
+	Decrease(John,x) & Money(x).
+Q10) Are there other people in Safeway while John is there?
+	-Loc(John,x) | -Supermarket(x) | -Staff(z,x) | Loc(z,x).
+Q11) Is John a vegetarian?
+	Nonvegetarian(John).
+Q12) Who owns the deodorant in Safeway?
+	Safeway(x) & Goods(Deodarant) & Possess(x, Deodarant) -> Own(x,Deodarant).
+Q13) Did John have an ounce of ground beef?
+	
+Q14) Does the Shell station next door have any gas?
+	Shellstation(x) & Posses(x,y) -> Gas(y).
+Q15) Do the tomatoes fit in John’s car trunk?
+		
+
+

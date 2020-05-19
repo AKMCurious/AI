@@ -1,0 +1,50 @@
+============================== prooftrans ============================
+Prover9 (32) version Dec-2007, Dec 2007.
+Process 9344 was started by hp on LAPTOP-U8QNP91K,
+Wed Apr 29 13:56:32 2020
+The command was "/cygdrive/c/Program Files (x86)/Prover9-Mace4/bin-win32/prover9".
+============================== end of head ===========================
+
+============================== end of input ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 23.39 (+ 0.17) seconds.
+% Length of proof is 30.
+% Level of proof is 6.
+% Maximum clause weight is 2.
+% Given clauses 0.
+
+2 Person(x) & Goods(y) & Supermarket(z) & Buy(x,y,z) -> Adult(x) # label(non_clause).  [assumption].
+7 Safeway(x) -> Supermarket(x) # label(non_clause).  [assumption].
+8 NorthBerkeleySafeway(x) -> Safeway(x) # label(non_clause).  [assumption].
+16 Goods(x) & Edible(x) <-> Food(x) # label(non_clause).  [assumption].
+19 Grocery(x) -> Food(x) # label(non_clause).  [assumption].
+24 Fruit(x) -> Grocery(x) # label(non_clause).  [assumption].
+28 Tomato(x) -> Fruit(x) # label(non_clause).  [assumption].
+110 Tomato(x) & Buy(John,x,y) & NorthBerkeleySafeway(x) # label(non_clause).  [assumption].
+112 Adult(John) # label(non_clause) # label(goal).  [goal].
+115 -Person(x) | -Goods(y) | -Supermarket(z) | -Buy(x,y,z) | Adult(x).  [clausify(2)].
+118 -Safeway(x) | Supermarket(x).  [clausify(7)].
+140 -Adult(John).  [deny(112)].
+144 -Safeway(x) | -Person(y) | -Goods(z) | -Buy(y,z,x) | Adult(y).  [resolve(118,b,115,c)].
+157 NorthBerkeleySafeway(x).  [clausify(110)].
+158 -NorthBerkeleySafeway(x) | Safeway(x).  [clausify(8)].
+173 -Fruit(x) | Grocery(x).  [clausify(24)].
+176 -Grocery(x) | Food(x).  [clausify(19)].
+178 Goods(x) | -Food(x).  [clausify(16)].
+227 -Safeway(x) | -Person(John) | -Goods(y) | -Buy(John,y,x).  [resolve(144,e,140,a)].
+258 -Tomato(x) | Fruit(x).  [clausify(28)].
+260 -Fruit(x) | Food(x).  [resolve(173,b,176,a)].
+647 Buy(John,x,y).  [clausify(110)].
+757 -Safeway(x) | -Person(John) | -Buy(John,y,x) | -Food(y).  [resolve(227,c,178,a)].
+3284 Person(John).  [assumption].
+3285 Tomato(x).  [clausify(110)].
+3290 Safeway(x).  [resolve(157,a,158,a)].
+3297 Food(x) | -Tomato(x).  [resolve(260,a,258,b)].
+3298 Food(x).  [copy(3297),unit_del(b,3285)].
+3362 -Safeway(x) | -Person(John) | -Food(y).  [resolve(757,c,647,a)].
+3363 $F.  [copy(3362),unit_del(a,3290),unit_del(b,3284),unit_del(c,3298)].
+
+============================== end of proof ==========================

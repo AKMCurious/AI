@@ -1,0 +1,127 @@
+formulas(assumptions).
+
+( Supermarket(x) & Goods(y) ) -> Sell(x,y).
+(Person(x) & Goods(y) & Supermarket(z) & Buy(x,y,z)) -> Adult(x).
+Person(x) -> (Adult(x) | Child(x)).
+Target(x) -> Supermarket(x).
+Walmart(x) -> Supermarket(x).
+Tomthumb(x) -> Supermarket(x).
+Safeway(x) -> Supermarket(x).
+NorthBerkeleySafeway(x) -> Safeway(x).
+NorthBerkeleySafeway(x) -> Loc(x, NorthBerkeley).
+Meat(x) -> Goods(x).
+Diary(x) -> Goods(x).
+Baked(x) -> Goods(x).
+Grocery(x) -> Goods(x).
+Pharmacyproduct(x) -> Goods(x).
+Grocery(x) -> (Fresh(x) | Frozen(x)).
+(Goods(x) & Edible(x)) -> Food(x).
+(Edible(x) & Person(y)) <-> Eat(y,x).
+Meat(x) -> Food(x).
+Grocery(x) -> Food(x).
+Diary(x) -> Food(x).
+(Person(x) & Food(y)) -> Eat(x,y).
+(Person(x) & Meat(y) & Eat(x,y)) -> Nonvegetarian(x).
+Beef(x) -> Meat(x).
+Fruit(x) -> Grocery(x).
+Fruit(x) -> Fresh(x).
+Vegetable(x) -> Fresh(x).
+Vegetable(x) -> Grocery(x).
+Tomato(x) -> Fruit(x).
+Onion(x) -> Vegetable(x).
+Potato(x) -> Vegetable(x).
+Carrot(x) -> Vegetable(x).
+Beans(x) -> Vegetable(x).
+(Meat(x) & Person(y) & -Eat(y,x)) -> Vegetarian(y).
+(Person(x) & Goods(y) & Edible(y) & Buy(x,y,z)) -> Eat(x,y).
+Supermarket(x) -> -Make(x,y).
+(Supermarket(x) & Buy(x,y,z) & Goods(y)) -> Distributioncentre(z).
+(Person(x) & Supermarket(y)) -> Buy(x,z,y).
+(Person(x) & Buy(x,y,z) & Supermarket(z) & Goods(y)) -> (Possess(x,w) & Money(w)).
+Money(x) -> (Cash(x) | Creditcard(x)).
+(Person(x) & Buy(x,y,z) & Goods(y) & Supermarket(z)) -> (Pay(x,w,z) & Money(w)).
+(Person(x) & Pay(x,y,z) & Money(y)) -> Possess(x,y).
+(Person(x) & Pay(x,y,z) & Money(y)) -> Decrease(x,y).
+Decrese(x,y) -> -Increase(x,y).
+Increase(x,y) -> -Decrease(x,y).
+(Person(x) & Staff(x,y) & Supermarket(y)) -> Adult(x).
+(Supermarket(x) & Own(y,x)) -> Adult(x).
+(Goods(x) & Possess(y,x) & Supermarket(y)) -> Own(y,x).
+(Own(x,y) & Own(y,z)) -> Own(x,z).
+(Safeway(x) & Own(y,x)) -> Safewaycorporation(y).
+(Supermarket(x) & Openstate(x,y) & Open(y) & Staff(z,x)) ->(Adult(z) & Loc(z,x)).
+(Person(x) & Supermarket(y) & Loc(x,y)) -> (Openstate(y,z) & Open(z)).
+Openstate(x,y) -> (Open(y) | Close(y)).
+Open(x) -> -Close(x).
+Close(x) -> -Open(x).
+(Goods(x) & Measure(y,x)) -> (Weight(y) | Number(y)).
+Weight(x) -> Pounds(x).
+(Pounds(x) & Ounces(y)) -> Greater(x,y).
+(Supermarkets(x) & Gasstations(y)) -> Near(x,y).
+(Person(x) & Gasstation(y) & Buy(x,z,y)) -> Gas(z).
+Shellstation(x) -> Gasstation(x).
+((Vehicle(x) & Storagespace(y) & Possess(x,y) & Goods(z) & Person(w) & Own(w,x) & Buy(w,z,v)) -> Fit(z,y)).
+all x exists y(Vehicle(x) -> (Possess(x,y) & Storagespace(y))).
+Car(x) -> Vehicle(x).
+Bus(x) -> Vehicle(x).
+Autotransport(x) -> Vehicle(x).
+Suv(x) -> Car(x).
+Truck(x) -> Car(x).
+Van(x) -> Car(x).
+Convertible(x) -> Car(x).
+Sedan(x) -> Car(x).
+(Car(x) & Storagespace(y) & Possess(x,y)) -> Trunk(y).
+Chicken(x) -> Meat(x).
+Pork(x) -> Meat(x).
+Lamb(x) -> Meat(x).
+Mutton(x) -> Meat(x).
+Venison(x) -> Meat(x).
+Seafood(x) -> Meat(x).
+Fish(x) -> Seafood(x).
+all x all y all z all w exists u ((Person(x) & Purchase(x,y,z,u) & Person(w) & Purchase(w,y,z,u)) -> Meet(x,w)).
+(Person(x) & Purchase(x,y,z,u) & Person(w) & -Purchase(w,y,z,u)) -> -Meet(x,w).
+(Tomato(x) & Measure(y,x) & Pounds(y) & Quantity(z,y)) -> (Number(z) & Measure(z,x)).
+(Onion(x) & Measure(y,x) & Pounds(y) & Quantity(z,y)) -> (Number(z) & Measure(z,x)).
+(Potato(x) & Measure(y,x) & Pounds(y) & Quantity(z,y)) -> (Number(z) & Measure(z,x)).
+Meat(x) -> Expires(x,y).
+all x all y exists z ((Supermarket(x) & Goods(y)) -> (Aisle(z) & Loc(y,z))).
+((Goods(x) & Buy(y,x,z) & Pay(y,w,z)) -> (Money(w) & Cost(x,w))).
+all x exists y (Goods(x) -> Cost(x,y)). 
+(Person(x) & Goods(y) & Cost(y,z) & Buy(x,y,w)) -> Pay(x,z,w).
+all x all y all z ((Person(x) & Supermarket(y) & Visit(z,x,y) & Event(z)) -> ((exists u (Start(z,u))) & (exists v (End(z,v))))).
+(Share(x,y) & Start(x,z) & End(x,w) & Start(y,u) & End(y,v)) -> ((Greater(w,u) | Greater(v,z)) & -After(x,y) & -Before(x,y)).
+Share(x,y) -> Overlap(x,y).
+(Subsumes(x,y) & Start(x,u) & End(x,z) & Start(y,v) & End(y,w)) -> (Greater(v,u) & Greater(z,w)).
+(Start(x,u) & End(x,v)) -> Greater(v,u).
+(Start(x,u) & End(y,v) & Greater(u,v)) -> After(x,y).
+After(x,y) -> Before(y,x).
+After(x,y) -> -Meet(x,y).
+Before(x,y) -> -Meet(x,y).
+Overlap(x,y) -> Meet(x,y).
+
+
+Greater(x,y) -> Lesser(y,x).
+Lesser(x,y) -> Greater(y,x).
+Greater(x,y) -> -Greater(y,x).
+Lesser(x,y) -> -Lesser(y,x).
+Near(x,y) -> Near(y,x).
+(Fit(x,y) & Goods(x) & Storagespace(y) & Vehicle(z) & Possess(z,y)) -> Fit(x,z).
+all x exists y (Aisle(x) -> Shelves(y)).
+Meet(x,y) -> Meet(y,x).
+Overlap(x,y) -> Overlap(y,x).
+
+
+Adult(x) -> -Child(x).
+Child(x) -> -Adult(x).
+
+Person(John).
+(Tomato(x) & Buy(John, x, y) & NorthBerkeleySafeway(x)).
+(Beef(x) & Buy(John, x, y) & NorthBerkeleySafeway(x)).
+
+end_of_list.
+
+formulas(goals).
+
+Buy(John,x,y) & Meat(x).
+
+end_of_list.

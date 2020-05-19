@@ -1,0 +1,46 @@
+============================== prooftrans ============================
+Prover9 (32) version Dec-2007, Dec 2007.
+Process 8712 was started by hp on LAPTOP-U8QNP91K,
+Wed Apr 29 13:59:55 2020
+The command was "/cygdrive/c/Program Files (x86)/Prover9-Mace4/bin-win32/prover9".
+============================== end of head ===========================
+
+============================== end of input ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 65.45 (+ 0.17) seconds.
+% Length of proof is 26.
+% Level of proof is 6.
+% Maximum clause weight is 3.
+% Given clauses 0.
+
+16 Goods(x) & Edible(x) <-> Food(x) # label(non_clause).  [assumption].
+19 Grocery(x) -> Food(x) # label(non_clause).  [assumption].
+24 Fruit(x) -> Grocery(x) # label(non_clause).  [assumption].
+28 Tomato(x) -> Fruit(x) # label(non_clause).  [assumption].
+34 Person(x) & Goods(y) & Edible(y) & Buy(x,y,z) -> Eat(x,y) # label(non_clause).  [assumption].
+110 Tomato(x) & Buy(John,x,y) & NorthBerkeleySafeway(x) # label(non_clause).  [assumption].
+112 Tomato(x) & Eat(John,x) # label(non_clause) # label(goal).  [goal].
+172 -Fruit(x) | Grocery(x).  [clausify(24)].
+175 -Grocery(x) | Food(x).  [clausify(19)].
+177 Goods(x) | -Food(x).  [clausify(16)].
+179 -Person(x) | -Goods(y) | -Edible(y) | -Buy(x,y,z) | Eat(x,y).  [clausify(34)].
+233 Edible(x) | -Food(x).  [clausify(16)].
+235 -Person(x) | -Edible(y) | -Buy(x,y,z) | Eat(x,y) | -Food(y).  [resolve(179,b,177,a)].
+253 -Tomato(x) | Fruit(x).  [clausify(28)].
+255 -Fruit(x) | Food(x).  [resolve(172,b,175,a)].
+626 Buy(John,x,y).  [clausify(110)].
+847 -Person(x) | -Buy(x,y,z) | Eat(x,y) | -Food(y) | -Food(y).  [resolve(235,b,233,a)].
+4460 Person(John).  [assumption].
+4461 Tomato(x).  [clausify(110)].
+4462 -Tomato(c1) | -Eat(John,c1).  [deny(112)].
+4463 -Eat(John,c1).  [copy(4462),unit_del(a,4461)].
+4471 Food(x) | -Tomato(x).  [resolve(255,a,253,b)].
+4472 Food(x).  [copy(4471),unit_del(b,4461)].
+4521 -Person(John) | Eat(John,x) | -Food(x) | -Food(x).  [resolve(847,b,626,a)].
+4522 Eat(John,x).  [copy(4521),merge(d),unit_del(a,4460),unit_del(c,4472)].
+4523 $F.  [resolve(4522,a,4463,a)].
+
+============================== end of proof ==========================

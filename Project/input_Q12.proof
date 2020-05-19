@@ -1,0 +1,34 @@
+============================== prooftrans ============================
+Prover9 (32) version Dec-2007, Dec 2007.
+Process 10452 was started by hp on LAPTOP-U8QNP91K,
+Wed Apr 29 15:45:31 2020
+The command was "/cygdrive/c/Program Files (x86)/Prover9-Mace4/bin-win32/prover9".
+============================== end of head ===========================
+
+============================== end of input ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 5.19 (+ 0.16) seconds.
+% Length of proof is 14.
+% Level of proof is 6.
+% Maximum clause weight is 3.
+% Given clauses 0.
+
+7 Safeway(x) -> Supermarket(x) # label(non_clause).  [assumption].
+47 Goods(x) & Possess(y,x) & Supermarket(y) -> Own(y,x) # label(non_clause).  [assumption].
+112 Safeway(x) & Goods(Deodarant) & Possess(x,Deodarant) -> Own(x,Deodarant) # label(non_clause) # label(goal).  [goal].
+118 -Safeway(x) | Supermarket(x).  [clausify(7)].
+128 -Goods(x) | -Possess(y,x) | -Supermarket(y) | Own(y,x).  [clausify(47)].
+177 Goods(Deodarant).  [deny(112)].
+210 -Goods(x) | -Possess(y,x) | Own(y,x) | -Safeway(y).  [resolve(128,c,118,b)].
+420 Safeway(c1).  [deny(112)].
+437 -Possess(x,Deodarant) | Own(x,Deodarant) | -Safeway(x).  [resolve(210,a,177,a)].
+1371 Possess(c1,Deodarant).  [deny(112)].
+1407 -Possess(c1,Deodarant) | Own(c1,Deodarant).  [resolve(437,c,420,a)].
+2096 -Own(c1,Deodarant).  [deny(112)].
+2125 Own(c1,Deodarant).  [resolve(1407,a,1371,a)].
+2126 $F.  [copy(2125),unit_del(a,2096)].
+
+============================== end of proof ==========================

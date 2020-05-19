@@ -1,0 +1,59 @@
+============================== prooftrans ============================
+Prover9 (32) version Dec-2007, Dec 2007.
+Process 2700 was started by hp on LAPTOP-U8QNP91K,
+Wed Apr 29 15:35:36 2020
+The command was "/cygdrive/c/Program Files (x86)/Prover9-Mace4/bin-win32/prover9".
+============================== end of head ===========================
+
+============================== end of input ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 8.67 (+ 0.12) seconds.
+% Length of proof is 39.
+% Level of proof is 8.
+% Maximum clause weight is 4.
+% Given clauses 0.
+
+7 Safeway(x) -> Supermarket(x) # label(non_clause).  [assumption].
+8 NorthBerkeleySafeway(x) -> Safeway(x) # label(non_clause).  [assumption].
+13 Grocery(x) -> Goods(x) # label(non_clause).  [assumption].
+24 Fruit(x) -> Grocery(x) # label(non_clause).  [assumption].
+28 Tomato(x) -> Fruit(x) # label(non_clause).  [assumption].
+40 Person(x) & Buy(x,y,z) & Goods(y) & Supermarket(z) -> Pay(x,u,z) & Money(u) # label(non_clause).  [assumption].
+41 Person(x) & Pay(x,y,z) & Money(y) -> Possess(x,y) # label(non_clause).  [assumption].
+86 Goods(x) & Buy(y,x,z) & Pay(y,u,z) -> Money(u) & Cost(x,u) # label(non_clause).  [assumption].
+110 Tomato(x) & Buy(John,x,y) & NorthBerkeleySafeway(x) # label(non_clause).  [assumption].
+112 Possess(John,x) & Money(x) # label(non_clause) # label(goal).  [goal].
+118 -Safeway(x) | Supermarket(x).  [clausify(7)].
+124 -Person(x) | -Buy(x,y,z) | -Goods(y) | -Supermarket(z) | Pay(x,u,z).  [clausify(40)].
+156 NorthBerkeleySafeway(x).  [clausify(110)].
+157 -NorthBerkeleySafeway(x) | Safeway(x).  [clausify(8)].
+172 -Fruit(x) | Grocery(x).  [clausify(24)].
+173 -Grocery(x) | Goods(x).  [clausify(13)].
+182 -Goods(x) | -Buy(y,x,z) | -Pay(y,u,z) | Money(u).  [clausify(86)].
+206 -Person(x) | -Buy(x,y,z) | -Goods(y) | Pay(x,u,z) | -Safeway(z).  [resolve(124,d,118,b)].
+229 -Fruit(x) | Goods(x).  [resolve(172,b,173,a)].
+252 -Tomato(x) | Fruit(x).  [clausify(28)].
+256 -Fruit(x) | -Buy(y,x,z) | -Pay(y,u,z) | Money(u).  [resolve(229,b,182,a)].
+280 -Fruit(x) | -Person(y) | -Buy(y,x,z) | Pay(y,u,z) | -Safeway(z).  [resolve(229,b,206,c)].
+350 -Person(x) | -Pay(x,y,z) | -Money(y) | Possess(x,y).  [clausify(41)].
+352 -Possess(John,c1) | -Money(c1).  [deny(112)].
+387 -Buy(x,y,z) | -Pay(x,u,z) | Money(u) | -Tomato(y).  [resolve(256,a,252,b)].
+412 Safeway(x).  [resolve(156,a,157,a)].
+483 -Person(x) | -Buy(x,y,z) | Pay(x,u,z) | -Safeway(z) | -Tomato(y).  [resolve(280,a,252,b)].
+725 Buy(John,x,y).  [clausify(110)].
+1010 -Buy(x,y,z) | -Pay(x,u,z) | -Tomato(y) | -Person(w) | -Pay(w,u,v5) | Possess(w,u).  [resolve(387,c,350,c)].
+1012 -Buy(x,y,z) | -Pay(x,c1,z) | -Tomato(y) | -Possess(John,c1).  [resolve(387,c,352,b)].
+1120 -Person(x) | -Buy(x,y,z) | Pay(x,u,z) | -Tomato(y).  [resolve(483,d,412,a)].
+1522 -Pay(John,x,y) | -Tomato(z) | -Person(u) | -Pay(u,x,w) | Possess(u,x).  [resolve(1010,a,725,a)].
+1523 -Pay(John,c1,x) | -Tomato(y) | -Possess(John,c1).  [resolve(1012,a,725,a)].
+2402 Person(John).  [assumption].
+2403 Tomato(x).  [clausify(110)].
+2443 -Person(John) | Pay(John,x,y) | -Tomato(z).  [resolve(1120,b,725,a)].
+2444 Pay(John,x,y).  [copy(2443),unit_del(a,2402),unit_del(c,2403)].
+2779 -Pay(John,c1,x) | -Tomato(y) | -Pay(John,c1,z) | -Tomato(u) | -Person(John) | -Pay(John,c1,w).  [resolve(1523,c,1522,e)].
+2780 $F.  [copy(2779),unit_del(a,2444),unit_del(b,2403),unit_del(c,2444),unit_del(d,2403),unit_del(e,2402),unit_del(f,2444)].
+
+============================== end of proof ==========================

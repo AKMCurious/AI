@@ -1,0 +1,42 @@
+============================== prooftrans ============================
+Prover9 (32) version Dec-2007, Dec 2007.
+Process 16688 was started by hp on LAPTOP-U8QNP91K,
+Sun Mar  8 20:06:08 2020
+The command was "/cygdrive/c/Program Files (x86)/Prover9-Mace4/bin-win32/prover9".
+============================== end of head ===========================
+
+============================== end of input ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.01 (+ 0.01) seconds.
+% Length of proof is 22.
+% Level of proof is 8.
+% Maximum clause weight is 4.
+% Given clauses 0.
+
+1 -Foodie(x) | Eats(x,F(x)) & Pizza(F(x)) | Eats(x,F(x)) & Salad(F(x)) # label(non_clause).  [assumption].
+2 Gyms(Peter) | -Dated(Ann,Peter) # label(non_clause) # label(goal).  [goal].
+3 -Foodie(x) | Pizza(F(x)) | Salad(F(x)).  [clausify(1)].
+4 -Pizza(x) | -Eats(y,x) | Happy(y).  [assumption].
+5 Foodie(Peter).  [assumption].
+6 -Foodie(x) | Eats(x,F(x)).  [clausify(1)].
+7 -Foodie(x) | Salad(F(x)) | -Eats(y,F(x)) | Happy(y).  [resolve(3,b,4,a)].
+8 Salad(F(Peter)) | -Eats(x,F(Peter)) | Happy(x).  [resolve(7,a,5,a)].
+9 -Salad(x) | -Eats(y,x) | Healthy(y).  [assumption].
+10 -Eats(x,F(Peter)) | Happy(x) | -Eats(y,F(Peter)) | Healthy(y).  [resolve(8,a,9,a)].
+11 -Healthy(x) | Gyms(x).  [assumption].
+12 Nice(Ann).  [assumption].
+13 -Nice(x) | -Happy(y) | -Dated(x,y).  [assumption].
+14 -Eats(x,F(Peter)) | Happy(x) | -Eats(y,F(Peter)) | Gyms(y).  [resolve(10,d,11,a)].
+15 -Gyms(Peter).  [deny(2)].
+16 -Happy(x) | -Dated(Ann,x).  [resolve(12,a,13,a)].
+17 Dated(Ann,Peter).  [deny(2)].
+18 -Happy(Peter).  [resolve(16,b,17,a)].
+19 -Eats(x,F(Peter)) | Happy(x) | -Eats(Peter,F(Peter)).  [resolve(14,d,15,a)].
+20 Eats(Peter,F(Peter)).  [resolve(5,a,6,a)].
+21 -Eats(Peter,F(Peter)) | -Eats(Peter,F(Peter)).  [resolve(18,a,19,b)].
+22 $F.  [copy(21),merge(b),unit_del(a,20)].
+
+============================== end of proof ==========================

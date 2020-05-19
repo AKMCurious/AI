@@ -1,0 +1,43 @@
+formulas(assumptions).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% Anyone who eats a pizza is a happy character
+% 
+% Every foodie eats [something that is] either a pizza or a salad
+% 
+% Anyone who eats a salad is healthy
+% 
+% Every healthy person goes to the gym
+% 
+% Any nice girl does not date anyone who is a happy character
+% 
+% Ann is a nice girl, and Peter is a foodie
+% 
+% (Conclusion) If Peter does not go to gym, then Ann does not date Peter.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+-Pizza(y) | -Eats(x,y) | Happy(x).
+
+-Foodie(x) | (Eats(x,F(x)) & Pizza(F(x))) | (Eats(x,F(x)) & Salad(F(x))).
+
+-Salad(y) | -Eats(x,y) | Healthy(x).
+
+-Healthy(x) | Gyms(x).
+
+-Nice(x) | -Happy(y) | -Dated(x,y).
+
+Nice(Ann).
+Foodie(Peter).
+
+
+end_of_list.
+
+formulas(goals).
+
+% if peter does not go to the gym, then Ann does not date Peter
+
+Gyms(Peter) | -Dated(Ann, Peter).
+
+end_of_list.

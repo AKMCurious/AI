@@ -1,0 +1,38 @@
+============================== prooftrans ============================
+Prover9 (32) version Dec-2007, Dec 2007.
+Process 6936 was started by hp on LAPTOP-U8QNP91K,
+Wed Apr 29 15:33:26 2020
+The command was "/cygdrive/c/Program Files (x86)/Prover9-Mace4/bin-win32/prover9".
+============================== end of head ===========================
+
+============================== end of input ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 13.88 (+ 0.19) seconds.
+% Length of proof is 18.
+% Level of proof is 5.
+% Maximum clause weight is 2.
+% Given clauses 0.
+
+7 Safeway(x) -> Supermarket(x) # label(non_clause).  [assumption].
+8 NorthBerkeleySafeway(x) -> Safeway(x) # label(non_clause).  [assumption].
+35 Supermarket(x) -> -Make(x,y) # label(non_clause).  [assumption].
+110 Tomato(x) & Buy(John,x,y) & NorthBerkeleySafeway(x) # label(non_clause).  [assumption].
+112 Tomato(x) & -Make(y,x) & Supermarket(y) # label(non_clause) # label(goal).  [goal].
+118 -Safeway(x) | Supermarket(x).  [clausify(7)].
+119 -Supermarket(x) | -Make(x,y).  [clausify(35)].
+137 -Tomato(c1) | Make(c2,c1) | -Supermarket(c2).  [deny(112)].
+157 NorthBerkeleySafeway(x).  [clausify(110)].
+158 -NorthBerkeleySafeway(x) | Safeway(x).  [clausify(8)].
+412 Safeway(x).  [resolve(157,a,158,a)].
+414 -Make(x,y) | -Safeway(x).  [resolve(119,a,118,b)].
+421 -Tomato(c1) | Make(c2,c1) | -Safeway(c2).  [resolve(137,c,118,b)].
+1263 -Make(x,y).  [resolve(412,a,414,b)].
+1264 -Tomato(c1) | Make(c2,c1).  [resolve(412,a,421,c)].
+2889 Tomato(x).  [clausify(110)].
+2955 -Tomato(c1).  [resolve(1264,b,1263,a)].
+2956 $F.  [copy(2955),unit_del(a,2889)].
+
+============================== end of proof ==========================

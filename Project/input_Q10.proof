@@ -1,0 +1,39 @@
+============================== prooftrans ============================
+Prover9 (32) version Dec-2007, Dec 2007.
+Process 5844 was started by hp on LAPTOP-U8QNP91K,
+Wed Apr 29 15:43:08 2020
+The command was "/cygdrive/c/Program Files (x86)/Prover9-Mace4/bin-win32/prover9".
+============================== end of head ===========================
+
+============================== end of input ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 11.17 (+ 0.16) seconds.
+% Length of proof is 19.
+% Level of proof is 7.
+% Maximum clause weight is 10.
+% Given clauses 23.
+
+50 Supermarket(x) & Openstate(x,y) & Open(y) & Staff(z,x) -> Adult(z) & Loc(z,x) # label(non_clause).  [assumption].
+51 Person(x) & Supermarket(y) & Loc(x,y) -> Openstate(y,z) & Open(z) # label(non_clause).  [assumption].
+112 -Loc(John,x) | -Supermarket(x) | -Staff(y,x) | Loc(y,x) # label(non_clause) # label(goal).  [goal].
+130 -Supermarket(x) | -Openstate(x,y) | -Open(y) | -Staff(z,x) | Loc(z,x).  [clausify(50)].
+131 -Person(x) | -Supermarket(y) | -Loc(x,y) | Openstate(y,z).  [clausify(51)].
+132 -Person(x) | -Supermarket(y) | -Loc(x,y) | Open(z).  [clausify(51)].
+137 Supermarket(c1).  [deny(112)].
+606 -Openstate(c1,x) | -Open(x) | -Staff(y,c1) | Loc(y,c1).  [resolve(137,a,130,a)].
+607 -Person(x) | -Loc(x,c1) | Openstate(c1,y).  [resolve(137,a,131,b)].
+620 -Person(x) | -Loc(x,c1) | Open(y).  [resolve(137,a,132,b)].
+625 -Person(x) | -Loc(x,c1) | -Open(y) | -Staff(z,c1) | Loc(z,c1).  [resolve(607,c,606,a)].
+1422 Staff(c2,c1).  [deny(112)].
+1436 -Person(x) | -Loc(x,c1) | -Staff(y,c1) | Loc(y,c1) | -Person(z) | -Loc(z,c1).  [resolve(625,c,620,c)].
+2781 Person(John).  [assumption].
+2783 Loc(John,c1).  [deny(112)].
+2784 -Loc(c2,c1).  [deny(112)].
+2817 -Person(x) | -Loc(x,c1) | Loc(c2,c1) | -Person(y) | -Loc(y,c1).  [resolve(1436,c,1422,a)].
+2818 -Person(x) | -Loc(x,c1) | -Person(y) | -Loc(y,c1).  [copy(2817),unit_del(c,2784)].
+5526 $F.  [ur(2818,b,2783,a,c,2781,a,d,2783,a),unit_del(a,2781)].
+
+============================== end of proof ==========================

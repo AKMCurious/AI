@@ -1,0 +1,48 @@
+============================== prooftrans ============================
+Prover9 (32) version Dec-2007, Dec 2007.
+Process 14444 was started by hp on LAPTOP-U8QNP91K,
+Wed Apr 29 15:10:38 2020
+The command was "/cygdrive/c/Program Files (x86)/Prover9-Mace4/bin-win32/prover9".
+============================== end of head ===========================
+
+============================== end of input ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 13.39 (+ 0.12) seconds.
+% Length of proof is 28.
+% Level of proof is 6.
+% Maximum clause weight is 5.
+% Given clauses 15.
+
+19 Grocery(x) -> Food(x) # label(non_clause).  [assumption].
+21 Person(x) & Food(y) -> Eat(x,y) # label(non_clause).  [assumption].
+22 Person(x) & Meat(y) & Eat(x,y) -> Nonvegetarian(x) # label(non_clause).  [assumption].
+23 Beef(x) -> Meat(x) # label(non_clause).  [assumption].
+24 Fruit(x) -> Grocery(x) # label(non_clause).  [assumption].
+28 Tomato(x) -> Fruit(x) # label(non_clause).  [assumption].
+110 Tomato(x) & Buy(John,x,y) & NorthBerkeleySafeway(x) # label(non_clause).  [assumption].
+111 Beef(x) & Buy(John,x,y) & NorthBerkeleySafeway(x) # label(non_clause).  [assumption].
+112 Nonvegetarian(John) # label(non_clause) # label(goal).  [goal].
+160 -Beef(x) | Meat(x).  [clausify(23)].
+163 -Person(x) | -Meat(y) | -Eat(x,y) | Nonvegetarian(x).  [clausify(22)].
+172 -Fruit(x) | Grocery(x).  [clausify(24)].
+175 -Grocery(x) | Food(x).  [clausify(19)].
+243 -Person(x) | -Food(y) | Eat(x,y).  [clausify(21)].
+250 -Fruit(x) | Food(x).  [resolve(172,b,175,a)].
+252 -Tomato(x) | Fruit(x).  [clausify(28)].
+297 -Fruit(x) | -Person(y) | Eat(y,x).  [resolve(250,b,243,b)].
+1138 -Beef(x) | -Person(y) | -Eat(y,x) | Nonvegetarian(y).  [resolve(160,b,163,b)].
+1139 Beef(x).  [clausify(111)].
+1256 -Nonvegetarian(John).  [deny(112)].
+1262 -Person(x) | -Eat(x,y) | Nonvegetarian(x).  [resolve(1138,a,1139,a)].
+2886 Person(John).  [assumption].
+2887 Tomato(x).  [clausify(110)].
+2889 -Person(x) | Eat(x,y) | -Tomato(y).  [resolve(297,a,252,b)].
+2890 -Person(x) | Eat(x,y).  [copy(2889),unit_del(c,2887)].
+2947 -Person(John) | -Eat(John,x).  [resolve(1262,c,1256,a)].
+2948 -Eat(John,x).  [copy(2947),unit_del(a,2886)].
+6015 $F.  [ur(2890,a,2886,a),unit_del(a,2948)].
+
+============================== end of proof ==========================

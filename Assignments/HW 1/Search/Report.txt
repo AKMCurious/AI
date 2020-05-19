@@ -1,0 +1,202 @@
+CS 6364: Artificial Intelligence
+
+Homework 1: Search Algorithms
+-----------------------------------------------------------------------------
+
+Sample Input:
+
+* 1 3
+4 2 5
+7 8 6
+
+------------------------------------
+
+Goal State:
+
+1 2 3
+4 5 6
+7 8 *
+
+---------------------------------------------------------------------------------
+
+Outputs:
+--------
+
+1. Breadth first search
+
+* 1 3
+4 2 5
+7 8 6
+
+
+1 * 3
+4 2 5
+7 8 6
+
+
+1 2 3
+4 * 5
+7 8 6
+
+
+1 2 3
+4 5 *
+7 8 6
+
+
+1 2 3
+4 5 6
+7 8 *
+
+
+No of moves = 4
+No of states enqueued = 59
+No of states expanded = 21
+
+2. Iterative deepening search
+
+* 1 3
+4 2 5
+7 8 6
+
+
+1 * 3
+4 2 5
+7 8 6
+
+
+1 2 3
+4 * 5
+7 8 6
+
+
+1 2 3
+4 5 *
+7 8 6
+
+
+1 2 3
+4 5 6
+7 8 *
+
+
+No of moves = 4
+No of states enqueued (in the last depth limited search) = 14
+No of states expanded (in the last depth limited search) = 10
+No of states enqueued (in the entire iterative deepening search) = 27
+No of states expanded (in the entire iterative deepening search) = 23
+
+3. A* search with heuristic 1 (No of tiles mismatched)
+
+* 1 3
+4 2 5
+7 8 6
+
+
+1 * 3
+4 2 5
+7 8 6
+
+
+1 2 3
+4 * 5
+7 8 6
+
+
+1 2 3
+4 5 *
+7 8 6
+
+
+1 2 3
+4 5 6
+7 8 *
+
+
+No of moves = 4
+No of states enqueued = 12
+No of states expanded = 5
+
+4. A* search with heuristic 2 (Manhattan distance)
+
+* 1 3
+4 2 5
+7 8 6
+
+
+1 * 3
+4 2 5
+7 8 6
+
+
+1 2 3
+4 * 5
+7 8 6
+
+
+1 2 3
+4 5 *
+7 8 6
+
+
+1 2 3
+4 5 6
+7 8 *
+
+
+No of moves = 4
+No of states enqueued = 12
+No of states expanded = 5
+
+-------------------------------------------------------------------------------------------------------------------------
+
+A* search Heuristic 1: (Number of mismatched tiles)
+
+The first heuristic used is number of tiles on the input state that are not in the same place/position as that in the goal state.
+
+-----------------------------------
+
+A* search Heuristic 2: (Manhattan distance)
+
+The second heuristic used is the sum of the number of moves required to directly move each tile in the input to its correct position as in the goal state.
+Here we do not care if the move is valid or not. ( A valid move involes swapping a blank tile and one of the adjacent tile.)
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+Heuristic performance comparison
+
+The second heuristic i.e. manhattan distance is better than the first one as this heuristic is more closer to the actual path than the first heuristic.
+for the sample input, both the heuristics perform the same. But if we check the results for another, more complex input like below:
+
+4 1 3
+* 7 5
+8 2 6
+
+We observe that, for second heuristic, the number of states or nodes enqueued is 37 and expanded is 14; 
+while for the first heuristic, the number of states or nodes enqueued is 114 and expanded is 43.
+
+This clearly shows that the second heuristic has a better performance than the first one.
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,41 @@
+============================== prooftrans ============================
+Prover9 (32) version Dec-2007, Dec 2007.
+Process 2072 was started by hp on LAPTOP-U8QNP91K,
+Sun Mar  8 20:28:01 2020
+The command was "/cygdrive/c/Program Files (x86)/Prover9-Mace4/bin-win32/prover9".
+============================== end of head ===========================
+
+============================== end of input ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.03) seconds.
+% Length of proof is 21.
+% Level of proof is 7.
+% Maximum clause weight is 4.
+% Given clauses 0.
+
+1 Gyms(Peter) | -Dated(Ann,Peter) # label(non_clause) # label(goal).  [goal].
+2 -Foodie(x) | Pizza(F(x)) | Salad(F(x)).  [assumption].
+3 -Pizza(x) | -Eats(y,x) | Happy(y).  [assumption].
+4 Foodie(Peter).  [assumption].
+5 -Foodie(x) | Eats(x,F(x)).  [assumption].
+6 -Foodie(x) | Salad(F(x)) | -Eats(y,F(x)) | Happy(y).  [resolve(2,b,3,a)].
+7 Salad(F(Peter)) | -Eats(x,F(Peter)) | Happy(x).  [resolve(6,a,4,a)].
+8 -Salad(x) | -Eats(y,x) | Healthy(y).  [assumption].
+9 -Eats(x,F(Peter)) | Happy(x) | -Eats(y,F(Peter)) | Healthy(y).  [resolve(7,a,8,a)].
+10 -Healthy(x) | Gyms(x).  [assumption].
+11 Nice(Ann).  [assumption].
+12 -Nice(x) | -Happy(y) | -Dated(x,y).  [assumption].
+13 -Eats(x,F(Peter)) | Happy(x) | -Eats(y,F(Peter)) | Gyms(y).  [resolve(9,d,10,a)].
+14 -Gyms(Peter).  [deny(1)].
+15 -Happy(x) | -Dated(Ann,x).  [resolve(11,a,12,a)].
+16 Dated(Ann,Peter).  [deny(1)].
+17 -Happy(Peter).  [resolve(15,b,16,a)].
+18 -Eats(x,F(Peter)) | Happy(x) | -Eats(Peter,F(Peter)).  [resolve(13,d,14,a)].
+19 Eats(Peter,F(Peter)).  [resolve(4,a,5,a)].
+20 -Eats(Peter,F(Peter)) | -Eats(Peter,F(Peter)).  [resolve(17,a,18,b)].
+21 $F.  [copy(20),merge(b),unit_del(a,19)].
+
+============================== end of proof ==========================
